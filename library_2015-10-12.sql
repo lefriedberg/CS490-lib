@@ -30,7 +30,7 @@ CREATE TABLE `book` (
   `ISBN` int(11) NOT NULL,
   `title` varchar(20) NOT NULL,
   `author` varchar(20) NOT NULL,
-  `shelf_status` tinyint(4) NOT NULL,
+  `shelf_status` boolean NOT NULL,
   `call_no` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
