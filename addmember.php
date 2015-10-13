@@ -3,22 +3,10 @@
 		
 		$errorMessage = "";
 
-		$varTitle = $_POST['title'];
-		$varAuthor = $_POST['author'];
-		$varISBN = $_POST['ISBN'];
-		$varCall_no = $_POST['call_no'];
+		$varName = $_POST['name'];
 
 		if(empty($varTitle) {
-			$errorMessage .= "<li>Enter title</li>";
-		}
-		if(empty($varAuthor)) {
-			$errorMessage .= "<li>Enter author</li>";
-		}
-		if(empty($varISBN) {
-			$errorMessage .= "<li>Enter ISBN</li>";
-		}
-		if(empty($varCall_no)) {
-			$errorMessage .= "<li>Enter call number</li>";
+			$errorMessage .= "<li>Enter name</li>";
 		}
 		
 		if(empty($errorMessage)) {
@@ -27,16 +15,13 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
-			$sql = "INSERT INTO book (title, author, ISBN, call_no) (".
-			PrepSQL($varTitle) . ", " .
-			PrepSQL($varAuthor) . ", " .
-			PrepSQL($varISBN) . ", " .
-			PrepSQL($varCall_no) . ")";
+			$sql = "INSERT INTO book (name) VALUES (".
+			PrepSQL($varName) . ")";
 			mysql_query($sql);
 
-			$rollno = mysql_query("SELECT rollno FROM stuinfo WHERE fname='" . $varFName . "' AND lname='" . $varLName . "'");
-			$row = mysql_fetch_array($rollno);
-			echo("Roll Number: " . $row['rollno']);
+			$memberid = mysql_query("SELECT ID FROM stuinfo WHERE name='" . $varName . "'");
+			$row = mysql_fetch_array($memberid);
+			echo("ID: " . $row['ID']);
 
 			exit();
 		} else {
