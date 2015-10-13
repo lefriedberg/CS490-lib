@@ -15,11 +15,11 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
-			$sql = "INSERT INTO book (name) VALUES (".
+			$sql = "INSERT INTO member (name) VALUES (".
 			PrepSQL($varName) . ")";
 			mysql_query($sql);
 
-			$memberid = mysql_query("SELECT ID FROM stuinfo WHERE name='" . $varName . "'");
+			$memberid = mysql_query("SELECT ID FROM member WHERE name='" . $varName . "'");
 			$row = mysql_fetch_array($memberid);
 			echo("ID: " . $row['ID']);
 
