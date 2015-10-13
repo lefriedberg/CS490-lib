@@ -1,30 +1,51 @@
 <?php
     
-    if($_POST["submit"] == "Submit") {
-        
-        $error = 0;
-
-		$varTitle = $_POST['title'];
-		$varAuthor = $_POST['author'];
-		$varISBN = $_POST['ISBN'];
-		$varCall_no = $_POST['call_no'];
+    if($_POST["update"] == "Submit") {
+        $varFirstName = $_POST['firstname'];
+        $varLastName = $_POST['lastname'];
+        $varBranch = $_POST['branch'];
+        $varBday = $_POST['bday'];
+        $varYear = $_POST['year'];
+        $varAddress = $_POST['address'];
+        $varTrimester = $_POST['trimester'];
           
-        $sql = "SELECT * FROM book WHERE";
-        if(strcmp($varTitle, "") != 0) {
-            $sql .= "title = " . PrepSQL($varTitle) . " , ";
+        $sql = "UPDATE studentinfo SET ";
+        $errorMessage = "";
+        if(empty($_POST['id'])) {
+            $errorMessage .= "No id found! <br>";
         }
-        if(strcmp($varAuthor, "") != 0) {
-            $sql .= "author = " . PrepSQL($varAuthor) . " , ";
+        if(!empty($_POST['firstname'])) {
+            $sql .= "firstname = " .  PrepSQL($varFirstName) . " , ";
         }
-        if(strcmp($varISBN, "") != 0) {
-            $sql .= "ISBN = " . PrepSQL($varISBN) . " , ";
+        if(!empty($_POST['lastname'])) {
+            $sql .= "lastname = " .  PrepSQL($varLastName) . " , ";
         }
-        if(strcmp($varCall_no, "") != 0) {
-            $sql .= "call_no = " . PrepSQL($varCall_no) . " , ";
+        if(!empty($_POST['branch'])) {
+            $sql .= "branch = " .  PrepSQL($varBranch) . " , ";
         }
-            
-            
-          $sql = substr($sql, 0 , -2); //now we have a good query!
+          if(!empty($_POST['bday'])) {
+              if(1 == preg_match("/^\d\d\d\d\-[01]\d\-\d\d$/", $varBday)){
+                  $sql .= "dateofbirth = " .  PrepSQL($varBday) . " , ";
+              }else{
+                  $errorMessage .= "Invalid date format <br>";
+              }
+        }
+            if(!empty($_POST['trimester'])) {
+            $sql .= "trimester = " .  PrepSQL($varTrimester) . " , ";
+        }
+          if(!empty($_POST['address'])) {
+            $sql .= "address = " .  PrepSQL($varAddress) . " , ";
+        }
+          if(strcmp($_POST['year'], "") != 0) {
+            $sql .= "year = " .  PrepSQL($varYear) . " , ";
+        }
+          
+          $sql = substr($sql, 0 , -2);
+
+          
+          $sql .= "WHERE id = " . $_POST['id'];
+          
+        //now we have a good query!
           
           
         echo('<html>
