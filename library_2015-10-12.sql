@@ -43,11 +43,10 @@ CREATE TABLE `book` (
 DROP TABLE IF EXISTS `loan`;
 
 CREATE TABLE `loan` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `due_date` date NOT NULL,
+  `due_date` date NOT NULL DEFAULT DATE_ADD(CURDATE(), 2 WEEK),
   `bID` int(11) NOT NULL,
   `mID` int(11) NOT NULL,
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`mID`, 'bID'),
   KEY `bID` (`bID`),
   KEY `mID` (`mID`),
   CONSTRAINT `loan_ibfk_1` FOREIGN KEY (`bID`) REFERENCES `book` (`ID`),
