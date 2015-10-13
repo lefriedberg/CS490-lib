@@ -5,7 +5,7 @@
 
 		$varName = $_POST['name'];
 
-		if(empty($varTitle) {
+		if(empty($varName) {
 			$errorMessage .= "<li>Enter name</li>";
 		}
 		
