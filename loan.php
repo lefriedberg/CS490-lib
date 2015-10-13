@@ -21,7 +21,7 @@
 			
 			$sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
-			PrepSQL($varBid) . ", " . 
+			PrepSQL($varBid) . ") " . 
 			mysql_query($sql);
 
 			$return = mysql_query("SELECT due_date FROM stuinfo WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
