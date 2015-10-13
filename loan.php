@@ -19,14 +19,14 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
-			$sql = "INSERT INTO loan (mID, bID) VALUES (".
+			$sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
-			PrepSQL($varBid) . ")";
+			PrepSQL($varBid) . ", " . 
 			mysql_query($sql);
 
-			$memberid = mysql_query("SELECT ID FROM stuinfo WHERE name='" . $varName . "'");
-			$row = mysql_fetch_array($memberid);
-			echo("ID: " . $row['ID']);
+			$return = mysql_query("SELECT due_date FROM stuinfo WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
+			$row = mysql_fetch_array($return);
+			echo("Due Date: " . $row['due_date']);
 
 			exit();
 		} else {
