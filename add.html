@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+	<title>Student Information System - Add</title>
+</head>
+<body>
+	<h1>Student Information System - Add</h1>
+	<p><a href="add.html">Add</a> <a href="update.html">Update</a> <a href="delete.html">Delete</a> <a href="search.html">Search</a></p>
+	<form action="add.php" method="post">
+	<table border="1">
+		<tr>
+			<td><label for="fname">First Name</label></td>
+			<td><input type="text" name="fname"></td>
+		</tr>
+		<tr>
+			<td><label for="lname">Last Name</label></td>
+			<td><input type="text" name="lname"></td>
+		</tr>
+		<tr>
+			<td><label for="branch">Branch</label></td>
+			<td>
+			<select name="branch">
+				<option value="">Select Branch</option>
+				<option value="exeter">Exeter</option>
+				<option value="manchester">Manchester</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="year">Year</label></td>
+			<td>
+			<select name="year">
+				<option value="">Select Year</option>
+				<option value="2014">2014-2015</option>
+				<option value="2015">2015-2016</option>
+				<option value="2016">2016-2017</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="semester">Semester</label></td>
+			<td>
+			<select name="semester">
+				<option value="">Select Semester</option>
+				<option value="fall">Fall</option>
+				<option value="winter">Winter</option>
+				<option value="spring">Spring</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td><label for="bdate">Date of Birth</label></td>
+			<td>
+				<input type="text" name="bmonth" size="6">
+				<input type="text" name="bdate" size="6">
+				<input type="text" name="byear" size="6">
+			</td>
+		</tr>
+		<tr>
+			<td><label for="address">Address</label></td>
+			<td><input type="text" name="address"></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><input type="submit" name="submit" value="Submit"></td>
+		</tr>
+	</table>
+	</form>
+</body>
+</html>
