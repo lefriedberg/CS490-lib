@@ -34,9 +34,9 @@
 			PrepSQL($varCall_no) . ")";
 			mysql_query($sql);
 
-			$rollno = mysql_query("SELECT rollno FROM stuinfo WHERE fname='" . $varFName . "' AND lname='" . $varLName . "'");
+			$rollno = mysql_query("SELECT ID FROM book WHERE title='" . $vartitle . "' AND author='" . $varAuthor . "'");
 			$row = mysql_fetch_array($rollno);
-			echo("Roll Number: " . $row['rollno']);
+			echo("Book ID: " . $row['ID']);
 
 			exit();
 		} else {
