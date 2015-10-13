@@ -25,16 +25,13 @@
 			$db = mysql_connect("localhost","root","");
 			
 			if(!$db) die("Error connecting to MySQL database.");
-			mysql_select_db("stuinfo" ,$db);
+			mysql_select_db("library" ,$db);
 			
-			$sql = "INSERT INTO stuinfo (fname, lname, branch, year, semester, dateofbirth, address)\nVALUES (".
-			PrepSQL($varFName) . ", " .
-			PrepSQL($varLName) . ", " .
-			PrepSQL($varBranch) . ", " .
-			$varYear . ", " .
-			PrepSQL($varSemester) . ", " .
-			"'" . $varBYear . "-" . $varBMonth . "-" . $varBDate . "', " .
-			PrepSQL($varAddress) . ")";
+			$sql = "INSERT INTO book (title, author, ISBN, call_no) (".
+			PrepSQL($varTitle) . ", " .
+			PrepSQL($varAuthor) . ", " .
+			PrepSQL($varISBN) . ", " .
+			PrepSQL($varCall_no) . ")";
 			mysql_query($sql);
 
 			$rollno = mysql_query("SELECT rollno FROM stuinfo WHERE fname='" . $varFName . "' AND lname='" . $varLName . "'");
