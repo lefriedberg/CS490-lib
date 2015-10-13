@@ -2,33 +2,68 @@
 
 <html>
 <head>
-	<title>Add Book</title>
+	<title>Library Database System</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Add Book</h1>
-	<form action="bookadd.php" method="post">
-	<table border="1">
-		<tr>
-			<td><label for="title">Title</label></td>
-			<td><input type="text" name="title"></td>
-		</tr>
-		<tr>
-			<td><label for="author">Author</label></td>
-			<td><input type="text" name="author"></td>
-		</tr>
-		<tr>
-			<td><label for="ISBN">ISBN</label></td>
-			<td><input type="text" name="ISBN"></td>
-		</tr>
-        <tr>
-			<td><label for="call_no">Call Number</label></td>
-			<td><input type="text" name="call_no"></td>
-		</tr>
-        <tr>
-			<td></td>
-			<td><input type="submit" name="submit" value="Submit"></td>
-		</tr>
-	</table>
-	</form>
+
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Menu</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="loan.html">Loans</a></li>
+            <li><a href="addbook.html">Add Book</a></li>
+			<li><a href="addmember.html">Add Member</a></li>
+			<li><a href="booksearch.html">Book Search</a></li>
+			<li><a href="membersearch.html">Member Search</a></li>
+			<li><a href="return.html">Return Book</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+		<h1>Add Book</h1>
+			<form action="bookadd.php" method="post">
+		  <div class="form-group">
+			<label for="title">Title</label>
+			<input type="text" class="form-control" id="title">
+		  </div>
+		  <div class="form-group">
+			<label for="author">Author</label>
+			<input type="text" class="form-control" id="author">
+		  </div>
+		  <div class="form-group">
+			<label for="ISBN">ISBN</label>
+			<input type="text" class="form-control" id="ISBN">
+		  </div>
+		   <div class="form-group">
+			<label for="call_no">Call Number</label>
+			<input type="text" class="form-control" id="call_no">
+		  </div>
+		  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+	
