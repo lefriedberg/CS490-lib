@@ -47,11 +47,12 @@
             $num=mysql_numrows($result);
             echo "<table border = 1>";
             while($row= mysql_fetch_array($result))
-                      echo("<tr><td>".$row['id']."</td><td>".
+                      echo("<tr><td>".
                            $row['Title']."</td><td>".
                            $row['Author']."</td><td>".
                            $row['ISBN']."</td><td>".
                            $row['call_no']."</td><td>".
+                           $row['shelf_status']."</td><td>"
                            $row['ID']."</td></tr>");
                   
             echo "</table>";
