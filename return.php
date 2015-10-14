@@ -19,6 +19,14 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
+			$dueQuery = mysql_query("SELECT due_date FROM stuinfo WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
+			$row = mysql_fetch_array($dueQuery);
+			$dueDate = $row['due_date'];
+
+			$diffQuery = mysql_query("SELECT DATEDIFF(CURRDATE(),'" . $dueDate . "') AS datediff");
+			$row = mysql_fetch_array($diffQuery);
+			$dateDiff = $row['datediff'];
+
 			$sql = "DELETE FROM loan WHERE mID=".
 			PrepSQL($varMid) . " AND bID=" . 
 			PrepSQL($varBid)
