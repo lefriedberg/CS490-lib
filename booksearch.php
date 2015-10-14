@@ -42,20 +42,17 @@
             if(!$db) die("Error connecting to MySQL database.");
             mysql_select_db("CSC490" ,$db);
 
-            mysql_query($sql);
+            $result = mysql_query($sql);
             
-            echo($sql);
-            
-            //echo the whole table
-            $query="SELECT * FROM studentinfo";$result=mysql_query($query);
             $num=mysql_numrows($result);
             echo "<table border = 1>";
             while($row= mysql_fetch_array($result))
                       echo("<tr><td>".$row['id']."</td><td>".
-                           $row['firstname']."</td><td>".
-                           $row['lastname']."</td><td>".
-                           $row['branch']."</td><td>".
-                           $row['year']."</td></tr>");
+                           $row['Title']."</td><td>".
+                           $row['Author']."</td><td>".
+                           $row['ISBN']."</td><td>".
+                           $row['call_no']."</td><td>".
+                           $row['ID']."</td></tr>");
                   
             echo "</table>";
            // $i=0;while ($i < $num) {
