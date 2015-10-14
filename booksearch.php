@@ -2,29 +2,34 @@
     
     if($_POST["submit"] == "Submit") {
         
-        $error = 0;
+        $errorMessage = "";
+
 		$varTitle = $_POST['title'];
 		$varAuthor = $_POST['author'];
 		$varISBN = $_POST['ISBN'];
 		$varCall_no = $_POST['call_no'];
           
         $sql = "SELECT * FROM book WHERE";
+        $rql = "";
         if(strcmp($varTitle, "") != 0) {
-            $sql .= "title = " . PrepSQL($varTitle) . " , ";
+            $rql .= "title = " . PrepSQL($varTitle) . " , ";
         }
         if(strcmp($varAuthor, "") != 0) {
-            $sql .= "author = " . PrepSQL($varAuthor) . " , ";
+            $rql .= "author = " . PrepSQL($varAuthor) . " , ";
         }
         if(strcmp($varISBN, "") != 0) {
-            $sql .= "ISBN = " . PrepSQL($varISBN) . " , ";
+            $rql .= "ISBN = " . PrepSQL($varISBN) . " , ";
         }
         if(strcmp($varCall_no, "") != 0) {
-            $sql .= "call_no = " . PrepSQL($varCall_no) . " , ";
+            $rql .= "call_no = " . PrepSQL($varCall_no) . " , ";
         }
             
+        if(empty($rql)){
+            $errorMessage = "Enter search terms!"   
+        }
             
-          $sql = substr($sql, 0 , -2); //now we have a good query!
-          
+          $rql = substr($rql, 0 , -2); //now we have a good query!
+          $sql .= rql;
           
         echo('<html>
         <head></head>
@@ -33,8 +38,10 @@
         if(empty($errorMessage)) 
         {
             $db = mysql_connect("localhost","root","");
+
             if(!$db) die("Error connecting to MySQL database.");
             mysql_select_db("CSC490" ,$db);
+
             mysql_query($sql);
             
             echo($sql);
@@ -60,6 +67,30 @@
         exit();
         } 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
