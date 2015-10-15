@@ -24,7 +24,7 @@
             $rql .= "call_no = " . PrepSQL($varCall_no) . " AND ";
         }
             
-        if(empty($rql)){
+        if(empty($rql)) {
             $errorMessage = "Enter search terms!"   
         }
             
@@ -35,8 +35,7 @@
         <head></head>
         <body>');
         
-        if(empty($errorMessage)) 
-        {
+        if(empty($errorMessage)) {
             $db = mysql_connect("localhost","root","");
 
             if(!$db) die("Error connecting to MySQL database.");

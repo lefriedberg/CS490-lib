@@ -6,7 +6,7 @@
 		$varMid = $_POST['memberid'];
 		$varBid = $_Post['bookid'];
 
-		if(empty($varMid) {
+		if(empty($varMid)) {
 			$errorMessage .= "<li>Enter Member ID</li>";
 		}
 		if(empty($varBid)) {

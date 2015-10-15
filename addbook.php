@@ -8,13 +8,13 @@
 		$varISBN = $_POST['ISBN'];
 		$varCall_no = $_POST['call_no'];
 
-		if(empty($varTitle) {
+		if(empty($varTitle)) {
 			$errorMessage .= "<li>Enter title</li>";
 		}
 		if(empty($varAuthor)) {
 			$errorMessage .= "<li>Enter author</li>";
 		}
-		if(empty($varISBN) {
+		if(empty($varISBN)) {
 			$errorMessage .= "<li>Enter ISBN</li>";
 		}
 		if(empty($varCall_no)) {
