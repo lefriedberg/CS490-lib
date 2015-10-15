@@ -27,7 +27,7 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
-			$sql = "INSERT INTO book (title, author, ISBN, call_no) (".
+			$sql = "INSERT INTO book (title, author, ISBN, call_no) VALUES (".
 			PrepSQL($varTitle) . ", " .
 			PrepSQL($varAuthor) . ", " .
 			PrepSQL($varISBN) . ", " .
