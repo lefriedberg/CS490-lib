@@ -2,22 +2,64 @@
 
 <html>
 <head>
-	<title>Add Member</title>
+	<title>Library Database System</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h1>Add Member</h1>
-	<p><a href="loan.html">Loans</a> <a href="addbook.html">Add Book</a> <a href="addmember.html">Add Member</a></p>
-	<form action="addmember.php" method="post">
-	<table border="1">
-		<tr>
-			<td><label for="name">Name</label></td>
-			<td><input type="text" name="name"></td>
-		</tr>
-        <tr>
-			<td></td>
-			<td><input type="submit" name="submit" value="Submit"></td>
-		</tr>
-	</table>
-	</form>
+
+ <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Home</span></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="loan.html"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a></li>
+            <li><a href="addbook.html"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></a></li>
+			<li><a href="addmember.html"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>
+			<li><a href="booksearch.html"><span class="glyphicon glyphicon-barcode" aria-hidden="true"></span></a></li>
+			<li><a href="membersearch.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+			<li><a href="return.html"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	<div class="container theme-showcase" role="main">
+		<div class="jumbotron">
+		<h1>Add Member</h1></br>
+		
+				<form class="form-horizontal" role="form" action="addmember.php" method="post">
+		   <div class="form-group">
+			<label class="control-label col-sm-1" for="name"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></label>
+			<div class="col-sm-10">
+			  <input type="text" class="form-control" id="name" placeholder="Name of the new member">
+			</div>
+		  </div>
+		    
+		  <div class="form-group"> 
+			<div class="col-sm-offset-1 col-sm-10">
+			  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit</button>
+			</div>
+		  </div>
+		</form>
+		
+		</div>
+	</div>
+	
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+	
