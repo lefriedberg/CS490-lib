@@ -26,15 +26,20 @@
 			$diffQuery = mysql_query("SELECT DATEDIFF(CURRDATE(),'" . $dueDate . "') AS datediff");
 			$row = mysql_fetch_array($diffQuery);
 			$dateDiff = $row['datediff'];
+			$fine = int($datediff)
+
+			if($fine > 0) {
+				$fineQuery = mysql_query("UPDATE member SET debt=debt+".$fine." WHERE ID=" . PrepSQL($varMid));
+			}
 
 			$sql = "DELETE FROM loan WHERE mID=".
 			PrepSQL($varMid) . " AND bID=" . 
-			PrepSQL($varBid)
+			PrepSQL($varBid);
 			mysql_query($sql);
 
-			$return = mysql_query("SELECT due_date FROM stuinfo WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
+			$return = mysql_query("SELECT debt FROM member WHERE ID='" . $varMid);
 			$row = mysql_fetch_array($return);
-			echo("Due Date: " . $row['due_date']);
+			echo("Fine: " . $row['debt']);
 
 			exit();
 		} else {
