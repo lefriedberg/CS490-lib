@@ -12,24 +12,24 @@
         $sql = "SELECT * FROM book WHERE";
         $rql = "";
         if(strcmp($varTitle, "") != 0) {
-            $rql .= "title = " . PrepSQL($varTitle) . " , ";
+            $rql .= "title = " . PrepSQL($varTitle) . " AND ";
         }
         if(strcmp($varAuthor, "") != 0) {
-            $rql .= "author = " . PrepSQL($varAuthor) . " , ";
+            $rql .= "author = " . PrepSQL($varAuthor) . " AND ";
         }
         if(strcmp($varISBN, "") != 0) {
-            $rql .= "ISBN = " . PrepSQL($varISBN) . " , ";
+            $rql .= "ISBN = " . PrepSQL($varISBN) . " AND ";
         }
         if(strcmp($varCall_no, "") != 0) {
-            $rql .= "call_no = " . PrepSQL($varCall_no) . " , ";
+            $rql .= "call_no = " . PrepSQL($varCall_no) . " AND ";
         }
             
         if(empty($rql)){
             $errorMessage = "Enter search terms!"   
         }
             
-          $rql = substr($rql, 0 , -2); //now we have a good query!
-          $sql .= rql;
+          $rql = substr($rql, 0 , -5); //now we have a good query!
+          $sql .= $rql;
           
         echo('<html>
         <head></head>
@@ -65,31 +65,6 @@
         exit();
         } 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     function PrepSQL($value)
