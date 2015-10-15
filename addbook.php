@@ -34,7 +34,7 @@
 			PrepSQL($varCall_no) . ")";
 			mysql_query($sql);
 
-			$rollno = mysql_query("SELECT ID FROM book WHERE title='" . $vartitle . "' AND author='" . $varAuthor . "'");
+			$rollno = mysql_query("SELECT ID FROM book WHERE title='" . $varTitle . "' AND author='" . $varAuthor . "'");
 			$row = mysql_fetch_array($rollno);
 			echo("Book ID: " . $row['ID']);
 
