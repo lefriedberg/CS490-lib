@@ -39,14 +39,15 @@ CREATE TABLE `book` (
 
 # Dump of table loan
 # ------------------------------------------------------------
+# DEFAULT DATE_ADD(CURDATE(),INTERVAL 2 WEEK)
 
 DROP TABLE IF EXISTS `loan`;
 
 CREATE TABLE `loan` (
-  `due_date` date NOT NULL DEFAULT DATE_ADD(CURDATE(), 2 WEEK),
+  `due_date` date NOT NULL,
   `bID` int(11) NOT NULL,
   `mID` int(11) NOT NULL,
-  PRIMARY KEY (`mID`, 'bID'),
+  PRIMARY KEY (`mID`, `bID`),
   KEY `bID` (`bID`),
   KEY `mID` (`mID`),
   CONSTRAINT `loan_ibfk_1` FOREIGN KEY (`bID`) REFERENCES `book` (`ID`),
