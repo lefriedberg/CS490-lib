@@ -7,9 +7,9 @@
 		$varTitle = $_POST['title'];
 		$varAuthor = $_POST['author'];
 		$varISBN = $_POST['ISBN'];
-		$varCall_no = $_POST['call_no'];
+		$varCall_no = $_POST['callno'];
           
-        $sql = "SELECT * FROM book WHERE";
+        $sql = "SELECT * FROM book WHERE ";
         $rql = "";
         if(strcmp($varTitle, "") != 0) {
             $rql .= "title = " . PrepSQL($varTitle) . " AND ";
@@ -25,12 +25,13 @@
         }
             
         if(empty($rql)) {
-            $errorMessage = "Enter search terms!"   
+            $errorMessage = "Enter search terms!";
         }
             
-          $rql = substr($rql, 0 , -5); //now we have a good query!
-          $sql .= $rql;
-          
+        $rql = substr($rql, 0 , -5); //now we have a good query!
+        $sql .= $rql;
+        
+
         echo('<html>
         <head></head>
         <body>');
@@ -39,20 +40,19 @@
             $db = mysql_connect("localhost","root","");
 
             if(!$db) die("Error connecting to MySQL database.");
-            mysql_select_db("CSC490" ,$db);
+            mysql_select_db("library" ,$db);
 
             $result = mysql_query($sql);
             
-            $num=mysql_numrows($result);
             echo "<table border = 1>";
             while($row= mysql_fetch_array($result))
-                      echo("<tr><td>".
-                           $row['Title']."</td><td>".
-                           $row['Author']."</td><td>".
-                           $row['ISBN']."</td><td>".
-                           $row['call_no']."</td><td>".
-                           $row['shelf_status']."</td><td>"
-                           $row['ID']."</td></tr>");
+                      echo("<tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr><tr><td>".
+                            $row['ID']."</td><td>".
+                            $row['title']."</td><td>".
+                            $row['author']."</td><td>".
+                            $row['ISBN']."</td><td>".
+                            $row['call_no']."</td><td>".
+                            $row['shelf_status']."</td></tr>");
                   
             echo "</table>";
            // $i=0;while ($i < $num) {
