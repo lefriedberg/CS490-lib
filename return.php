@@ -4,13 +4,13 @@
 		$errorMessage = "";
 
 		$varMid = $_POST['memberid'];
-		$varBid = $_Post['bookid'];
+		$varBid = $_POST['bookid'];
 
 		if(empty($varMid)) {
 			$errorMessage .= "<li>Enter Member ID</li>";
 		}
 		if(empty($varBid)) {
-			$errorMessage .= "<li>Enter Book ID</li>"
+			$errorMessage .= "<li>Enter Book ID</li>";
 		}
 		
 		if(empty($errorMessage)) {
@@ -19,16 +19,17 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
-			$dueQuery = mysql_query("SELECT due_date FROM stuinfo WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
+			$dueQuery = mysql_query("SELECT due_date FROM loan WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
 			$row = mysql_fetch_array($dueQuery);
 			$dueDate = $row['due_date'];
 
-			$diffQuery = mysql_query("SELECT DATEDIFF(CURRDATE(),'" . $dueDate . "') AS datediff");
+			$diffQuery = mysql_query("SELECT DATEDIFF(CURDATE(),'" . $dueDate . "') AS datediff");
 			$row = mysql_fetch_array($diffQuery);
 			$dateDiff = $row['datediff'];
-			$fine = int($datediff)
+			$fine = intval($dateDiff);
 
 			if($fine > 0) {
+				echo("Fine: ".$fine);
 				$fineQuery = mysql_query("UPDATE member SET debt=debt+".$fine." WHERE ID=" . PrepSQL($varMid));
 			}
 
@@ -37,9 +38,9 @@
 			PrepSQL($varBid);
 			mysql_query($sql);
 
-			$return = mysql_query("SELECT debt FROM member WHERE ID='" . $varMid);
+			$return = mysql_query("SELECT debt FROM member WHERE ID=" . $varMid);
 			$row = mysql_fetch_array($return);
-			echo("Fine: " . $row['debt']);
+			echo("Debt: " . $row['debt']);
 
 			exit();
 		} else {
