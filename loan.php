@@ -4,13 +4,13 @@
 		$errorMessage = "";
 
 		$varMid = $_POST['memberid'];
-		$varBid = $_Post['bookid'];
+		$varBid = $_POST['bookid'];
 
 		if(empty($varMid)) {
 			$errorMessage .= "<li>Enter Member ID</li>";
 		}
 		if(empty($varBid)) {
-			$errorMessage .= "<li>Enter Book ID</li>"
+			$errorMessage .= "<li>Enter Book ID</li>";
 		}
 		
 		if(empty($errorMessage)) {
@@ -21,10 +21,11 @@
 			
 			$sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
-			PrepSQL($varBid) . ") " . 
+			PrepSQL($varBid) . ", " .
+			"DATE_ADD(CURDATE(),INTERVAL 2 WEEK) )"; 
 			mysql_query($sql);
 
-			$return = mysql_query("SELECT due_date FROM stuinfo WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
+			$return = mysql_query("SELECT * FROM loan WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
 			$row = mysql_fetch_array($return);
 			echo("Due Date: " . $row['due_date']);
 
