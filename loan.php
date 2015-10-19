@@ -60,8 +60,8 @@
   			echo "</div>";
 		}
 		
-		if(empty($errorMessage)) {
-			$db = mysql_connect("localhost","root","");
+        
+        $db = mysql_connect("localhost","root","");
 			
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
@@ -75,10 +75,16 @@
 			echo "<div class='alert alert-danger' role='alert'>";
 			echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>";
 			echo "<span class='sr-only'>Error:</span>";
-  			echo " You forgot to enter the book ID!";
+  			echo " This book is checked out!";
   			echo "</div>";
-		}            
-            
+		}    exit();
+        
+        
+		if(empty($errorMessage)) {
+			        
+            if(!$db) die("Error connecting to MySQL database.");
+			mysql_select_db("library" ,$db);
+			
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
@@ -112,7 +118,6 @@
 	// function: PrepSQL()
 	// use stripslashes and mysql_real_escape_string PHP functions
 	// to sanitize a string for use in an SQL query
-	//
 	// also puts single quotes around the string
 	//
 	function PrepSQL($value) {
