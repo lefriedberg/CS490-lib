@@ -66,7 +66,7 @@
 			mysql_select_db("library" ,$db);
 			
             
-            
+            $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = '" . PrepSQL(Bid) . "'");
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
@@ -77,6 +77,8 @@
 			$return = mysql_query("SELECT * FROM loan WHERE mID='" . PrepSQL($varMid) . "' AND bID='" . PrepSQL($varBid) . "'");
 			$row = mysql_fetch_array($return);
 			
+            mysql_query("UPDATE book SET shelf_status = 1 WHERE ID = '" . PrepSQL(Bid) . "'");
+            
 			echo "<div class='alert alert-success' role='alert'>";
 			echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
 			echo "<span class='sr-only'>Success</span>";
