@@ -77,7 +77,7 @@
 			$return = mysql_query("SELECT * FROM loan WHERE mID='" . PrepSQL($varMid) . "' AND bID='" . PrepSQL($varBid) . "'");
 			$row = mysql_fetch_array($return);
 			
-            mysql_query("UPDATE book SET shelf_status = 1 WHERE ID = '" . PrepSQL(Bid) . "'");
+            mysql_query("UPDATE book SET shelf_status = 1 WHERE ID = '" . PrepSQL($varBid) . "'");
             
 			echo "<div class='alert alert-success' role='alert'>";
 			echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
