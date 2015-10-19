@@ -44,7 +44,8 @@
 		$varAuthor = $_POST['author'];
 		$varISBN = $_POST['ISBN'];
 		$varCall_no = $_POST['call_no'];
-
+        
+        //make sure all fields are complete
 		if(empty($varTitle)) {
 			$errorMessage .= "Title";
 			echo "<div class='alert alert-danger' role='alert'>";
@@ -80,7 +81,7 @@
 		}
 		
 		if(empty($errorMessage)) {
-			$db = mysql_connect("localhost","root","");
+			$db = mysql_connect("localhost","root",""); //connect to database
 			
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
@@ -118,7 +119,6 @@
 	// function: PrepSQL()
 	// use stripslashes and mysql_real_escape_string PHP functions
 	// to sanitize a string for use in an SQL query
-	//
 	// also puts single quotes around the string
 	//
 	function PrepSQL($value) {
