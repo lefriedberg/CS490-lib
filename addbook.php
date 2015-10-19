@@ -92,7 +92,7 @@
 			PrepSQL($varCall_no) . ")";
 			mysql_query($sql);
 
-			$rollno = mysql_query("SELECT ID FROM book WHERE title='" . $varTitle . "' AND author='" . $varAuthor . "'");
+			$rollno = mysql_query("SELECT ID FROM book ORDER BY id DESC LIMIT 1");
 			
 
 			$row = mysql_fetch_array($rollno);
