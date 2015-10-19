@@ -41,7 +41,8 @@
 		$errorMessage = "";
 
 		$varName = $_POST['name'];
-
+        
+        //there must be a name
 		if(empty($varName)) {
 			$errorMessage .= "Name";
 			echo "<div class='alert alert-danger' role='alert'>";
@@ -54,14 +55,14 @@
 		if(empty($errorMessage)) {
 			$db = mysql_connect("localhost","root","");
 			
-			if(!$db) die("Error connecting to MySQL database.");
+			if(!$db) die("Error connecting to MySQL database."); //connect to database
 			mysql_select_db("library" ,$db);
 			
 			$sql = "INSERT INTO member (name) VALUES (".
 			PrepSQL($varName) . ")";
 			mysql_query($sql);
 
-			$memberid = mysql_query("SELECT ID FROM member ORDER BY id DESC LIMIT 1");
+			$memberid = mysql_query("SELECT ID FROM member ORDER BY id DESC LIMIT 1"); //prints id
 			$row = mysql_fetch_array($memberid);
 			
 			echo "<div class='alert alert-success' role='alert'>";
