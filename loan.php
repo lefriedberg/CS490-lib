@@ -78,7 +78,7 @@
                 echo "<span class='sr-only'>Error:</span>";
                 echo " This book is checked out!";
                 echo "</div>";
-            }
+            }else{
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
@@ -100,8 +100,10 @@
 
 			echo("<p>Due Date: " . $row['due_date'] . "</p>");
 			echo("</br>");
+            
 
 			echo "<a href='loan.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Submit Another Entry</a>";
+            }
 			exit();
 		} else {
 			echo "<a href='loan.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Try Again</a>";
