@@ -67,15 +67,15 @@
             echo "<div class='alert alert-success' role='alert'>";
             echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
             echo "<span class='sr-only'>Success</span>";
-            echo " Book found!";
+            echo " Reports generated!!";
             echo "</div>";  
 
             if ($varBookCheck=="book") {
                 $bookresult = mysql_query("SELECT * FROM book");
 
-                echo "<table class='table table-striped'>";
+                echo "<h3>Books</h3><br/ ><table class='table table-striped'><tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr>";
                 while($row= mysql_fetch_array($bookresult))
-                      echo("<tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr><tr><td>".
+                      echo("<tr><td>".
                             $row['ID']."</td><td>".
                             $row['title']."</td><td>".
                             $row['author']."</td><td>".
@@ -88,9 +88,9 @@
             if ($varMemberCheck=="member") {
                 $memberresult = mysql_query("SELECT * FROM member");
 
-                echo "<table class='table table-striped'>";
+                echo "<h3>Members</h3><br/ ><table class='table table-striped'><tr><td>ID</td><td>Name</td><td>Debt</td></tr>";
                 while($row = mysql_fetch_array($memberresult))
-                      echo("<tr><td>ID</td><td>Name</td><td>Debt</td></tr><tr><td>".
+                      echo("<tr><td>".
                            $row['ID']."</td><td>".
                            $row['name']."</td><td>".
                            $row['debt']."</td></tr>");
@@ -102,9 +102,9 @@
                     FROM book B, loan L, member M 
                     WHERE B.ID = L.bID AND M.ID = L.mID");
 
-                echo "<table class='table table-striped'>";
+                echo "<h3>Loans</h3><br/ ><table class='table table-striped'><tr><td>Member</td><td>Book</td><td>Due Date</td></tr>";
                 while($row = mysql_fetch_array($loanresult))
-                      echo("<tr><td>Member</td><td>Book</td><td>Due Date</td></tr><tr><td>".
+                      echo("<tr><td>".
                            $row['name']."</td><td>".
                            $row['title']."</td><td>".
                            $row['due_date']."</td></tr>");
