@@ -3,6 +3,19 @@ body {
   padding-bottom: 30px;
 }
 
+.navbar-inverse .navbar-brand > li > a:hover
+.navbar-inverse .navbar-brand > li > a:focus
+.navbar-inverse .navbar-brand > li > a:active {
+  background-color: #22313f;
+}
+
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav > li > a:active {
+  color: #c5eff7;
+  background-color: #2c3e50;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
