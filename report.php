@@ -40,10 +40,19 @@
     if($_POST["submit"] == "Submit") {
         
         $errorMessage = "";
+        $varBookCheck = "";
+        $varMemberCheck = "";
+        $varLoanCheck = "";
 
-		$varBookCheck = $_POST['bookcheckbox'];
-        $varMemberCheck = $_POST['membercheckbox'];
-        $varLoanCheck = $_POST['loancheckbox'];
+        if (isset($_POST['bookcheckbox'])) {
+		   $varBookCheck = $_POST['bookcheckbox'];
+        }
+        if (isset($_POST['membercheckbox'])) {
+            $varMemberCheck = $_POST['membercheckbox'];
+        }
+        if (isset($_POST['loancheckbox'])) {
+            $varLoanCheck = $_POST['loancheckbox'];
+        }
 
         if(empty($varBookCheck)&&empty($varMemberCheck)&&empty($varLoanCheck)) {
             $errorMessage .= "None";
