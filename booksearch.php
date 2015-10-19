@@ -94,9 +94,9 @@
 
 
 
-            echo "<table class='table table-striped'>";
+            echo "<table class='table table-striped'><tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr>";
             while($row= mysql_fetch_array($result))
-                      echo("<tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr><tr><td>".
+                      echo("<tr><td>".
                             $row['ID']."</td><td>".
                             $row['title']."</td><td>".
                             $row['author']."</td><td>".

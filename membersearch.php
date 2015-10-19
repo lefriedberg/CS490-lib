@@ -71,9 +71,9 @@
             echo "</div>";  
             
 
-            echo "<table class='table table-striped'>";
+            echo "<table class='table table-striped'><tr><td>ID</td><td>Name</td><td>Debt</td></tr>";
             while($row = mysql_fetch_array($result))
-                      echo("<tr><td>ID</td><td>Name</td><td>Debt</td></tr><tr><td>".
+                      echo("<tr><td>".
                            $row['ID']."</td><td>".
                            $row['name']."</td><td>".
                            $row['debt']."</td></tr>");
