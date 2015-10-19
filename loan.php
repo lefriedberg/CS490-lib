@@ -61,31 +61,24 @@
 		}
 		
         
-        $db = mysql_connect("localhost","root","");
-			
-			if(!$db) die("Error connecting to MySQL database.");
+		if(empty($errorMessage)) {
+            
+            $db = mysql_connect("localhost","root","");       
+            if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
             
             $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = " . PrepSQL($varBid));
             $checked = (mysql_fetch_array($is_out)["shelf_status"]); //1 if the book has already been checked out, 0 otherwise     
           
-            
             if($checked == 1) {
-                $errorMessage .= "Book ID";
+                $errorMessage .= "Check";
                 echo "<div class='alert alert-danger' role='alert'>";
                 echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>";
                 echo "<span class='sr-only'>Error:</span>";
                 echo " This book is checked out!";
                 echo "</div>";
-		}    exit();
-        
-        
-		if(empty($errorMessage)) {
-			        
-            if(!$db) die("Error connecting to MySQL database.");
-			mysql_select_db("library" ,$db);
-			
+            }
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
@@ -96,7 +89,7 @@
 			$return = mysql_query("SELECT * FROM loan WHERE mID=" . PrepSQL($varMid) . " AND bID=" . PrepSQL($varBid) . "");
             $row = mysql_fetch_array($return);
 			
-            mysql_query("UPDATE book SET shelf_status = 1 WHERE ID = '" . PrepSQL($varBid) . "'");
+            mysql_query("UPDATE book SET shelf_status = 1 WHERE ID = " . PrepSQL($varBid));
             
 			echo "<div class='alert alert-success' role='alert'>";
 			echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
