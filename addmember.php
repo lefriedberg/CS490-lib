@@ -61,7 +61,7 @@
 			PrepSQL($varName) . ")";
 			mysql_query($sql);
 
-			$memberid = mysql_query("SELECT ID FROM member WHERE name='" . $varName . "'");
+			$memberid = mysql_query("SELECT ID FROM member ORDER BY id DESC LIMIT 1");
 			$row = mysql_fetch_array($memberid);
 			
 			echo "<div class='alert alert-success' role='alert'>";
