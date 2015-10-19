@@ -85,6 +85,14 @@
 
             $result = mysql_query($sql);
             
+            echo "<div class='alert alert-success' role='alert'>";
+            echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
+            echo "<span class='sr-only'>Success</span>";
+            echo " Book found!";
+            echo "</div>";  
+
+
+
             echo "<table class='table table-striped'>";
             while($row= mysql_fetch_array($result))
                       echo("<tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr><tr><td>".

@@ -63,6 +63,13 @@
 
             $result = mysql_query("SELECT * FROM member WHERE name=" . PrepSQL($varName));
             
+            echo "<div class='alert alert-success' role='alert'>";
+            echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
+            echo "<span class='sr-only'>Success</span>";
+            echo " Member found!";
+            echo "</div>";  
+            
+
             echo "<table class='table table-striped'>";
             while($row = mysql_fetch_array($result))
                       echo("<tr><td>ID</td><td>Name</td><td>Debt</td></tr><tr><td>".

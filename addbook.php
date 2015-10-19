@@ -99,7 +99,7 @@
 			echo "<div class='alert alert-success' role='alert'>";
 			echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
 			echo "<span class='sr-only'>Success</span>";
-  			echo " Form submitted!";
+  			echo " Book added!";
   			echo "</div>";	
 
 			echo("<p>Book ID: " . $row['ID']. "</p>");
