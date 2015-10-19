@@ -39,30 +39,32 @@
 		<div class="jumbotron">
 		<h1>Create Report</h1>
 		<p>Select ALL items that you wish to include in report, then click "Submit."</p>
-		<div class="checkbox checkbox-success">
-		    <input name="checkbox1" value="bookcount" type="checkbox">
-		    <label for="checkbox1">
-		        Book count
-		    </label>
-        </div>
+		
+    <form class="form-horizontal" role="form" action="report.php" method="post">
+      <div class="checkbox checkbox-success">
+  		    <input name="checkbox1" value="bookcount" type="checkbox">
+  		    <label for="checkbox1">
+  		        Book count
+  		    </label>
+          </div>
+
+      
         <div class="checkbox checkbox-success">
             <input name="checkbox2" value="membercount" type="checkbox">
             <label for="checkbox2">
                 Member count
             </label>
         </div>
+   
+  
         <div class="checkbox checkbox-success">
             <input name="checkbox3" value="loans" type="checkbox">
             <label for="checkbox3">
                 Loans
             </label>
         </div>
-   <!--/.nav-collapse     <div class="checkbox checkbox-success">
-            <input name="checkbox4" value="returns" type="checkbox">
-            <label for="checkbox4">
-                Returns
-            </label>
-        </div> -->
+
+   </form>
 
 
 		</br>
