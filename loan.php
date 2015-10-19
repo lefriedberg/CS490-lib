@@ -66,7 +66,7 @@
 			mysql_select_db("library" ,$db);
 			
             
-            $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = '" . PrepSQL(Bid) . "'");
+            $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = '" . PrepSQL($varBid) . "'");
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 

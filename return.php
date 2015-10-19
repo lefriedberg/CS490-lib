@@ -86,7 +86,7 @@
 				$fineQuery = mysql_query("UPDATE member SET debt=debt+".$fine." WHERE ID=" . PrepSQL($varMid));
 			}
             
-            mysql_query("UPDATE book SET shelf_status = 0 WHERE ID = " . PrepSQL(Bid));
+            mysql_query("UPDATE book SET shelf_status = 0 WHERE ID = " . PrepSQL($varBid));
             
 			$sql = "DELETE FROM loan WHERE mID=".
 			PrepSQL($varMid) . " AND bID=" . 
