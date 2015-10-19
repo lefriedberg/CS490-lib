@@ -65,13 +65,16 @@
 			if(!$db) die("Error connecting to MySQL database.");
 			mysql_select_db("library" ,$db);
 			
-			$sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
+            
+            
+            
+            $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
 			PrepSQL($varBid) . ", " .
 			"DATE_ADD(CURDATE(),INTERVAL 2 WEEK) )"; 
 			mysql_query($sql);
 
-			$return = mysql_query("SELECT * FROM loan WHERE mID='" . $varMid . "' AND bID='" . $varBid . "'");
+			$return = mysql_query("SELECT * FROM loan WHERE mID='" . PrepSQL($varMid) . "' AND bID='" . PrepSQL($varBid) . "'");
 			$row = mysql_fetch_array($return);
 			
 			echo "<div class='alert alert-success' role='alert'>";

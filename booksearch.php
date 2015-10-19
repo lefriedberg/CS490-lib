@@ -104,12 +104,7 @@
                             $row['shelf_status']."</td></tr>");
                   
             echo "</table>";
-           // $i=0;while ($i < $num) {
-            //    echo implode(" ",mysql_fetch_array($result));
-            //    echo "<br>";
-              //  $i++;}
-            
-        //header("thank-you.html");
+           
             echo "<a href='booksearch.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Submit Another Entry</a>";
         exit();
         }
