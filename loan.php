@@ -66,7 +66,7 @@
 			mysql_select_db("library" ,$db);
 			
             
-            $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = '" . PrepSQL($varBid) . "'");
+            $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = " . PrepSQL($varBid));
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
@@ -74,8 +74,8 @@
 			"DATE_ADD(CURDATE(),INTERVAL 2 WEEK) )"; 
 			mysql_query($sql);
 
-			$return = mysql_query("SELECT * FROM loan WHERE mID='" . PrepSQL($varMid) . "' AND bID='" . PrepSQL($varBid) . "'");
-			$row = mysql_fetch_array($return);
+			$return = mysql_query("SELECT * FROM loan WHERE mID=" . PrepSQL($varMid) . " AND bID=" . PrepSQL($varBid) . "");
+            $row = mysql_fetch_array($return);
 			
             mysql_query("UPDATE book SET shelf_status = 1 WHERE ID = '" . PrepSQL($varBid) . "'");
             
