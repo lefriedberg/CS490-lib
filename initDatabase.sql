@@ -27,11 +27,11 @@ DROP TABLE IF EXISTS `book`;
 
 CREATE TABLE `book` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ISBN` int(11) NOT NULL,
+  `ISBN` bigint(13) NOT NULL,
   `title` varchar(20) NOT NULL,
   `author` varchar(20) NOT NULL,
   `shelf_status` boolean NOT NULL DEFAULT 0,
-  `call_no` varchar(20) DEFAULT NULL,
+  `call_no` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
