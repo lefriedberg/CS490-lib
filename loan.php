@@ -68,6 +68,17 @@
 			
             
             $is_out = mysql_query("SELECT shelf_status FROM book WHERE ID = " . PrepSQL($varBid));
+            $checked = (mysql_fetch_array($is_out)["shelf_status"]); //1 if the book has already been checked out, 0 otherwise     
+            
+            if($checked = 1) {
+			$errorMessage .= "Book ID";
+			echo "<div class='alert alert-danger' role='alert'>";
+			echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>";
+			echo "<span class='sr-only'>Error:</span>";
+  			echo " You forgot to enter the book ID!";
+  			echo "</div>";
+		}            
+            
             
             $sql = "INSERT INTO loan (mID, bID, due_date) VALUES (".
 			PrepSQL($varMid) . ", " . 
