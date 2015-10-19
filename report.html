@@ -5,6 +5,7 @@
 	<title>Library Database System</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -29,16 +30,46 @@
 			<li><a href="membersearch.html"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
 			<li><a href="return.html"><span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></a></li>
 			<li><a href="report.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></li>
-			<li><a href="report.html"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></li>
+			
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 	<div class="container theme-showcase" role="main">
 		<div class="jumbotron">
-		<h1>Report Page</h1>
-		<p>WORK IN PROGRESS </p>
+		<h1>Create Report</h1>
+		<p>Select ALL items that you wish to include in report, then click "Submit."</p>
+
+		<div class="checkbox checkbox-success">
+		    <input name="checkbox1" value="bookcount" type="checkbox">
+		    <label for="checkbox1">
+		        Book count
+		    </label>
+        </div>
+        <div class="checkbox checkbox-success">
+            <input name="checkbox2" value="membercount" type="checkbox">
+            <label for="checkbox2">
+                Member count
+            </label>
+        </div>
+        <div class="checkbox checkbox-success">
+            <input name="checkbox3" value="loans" type="checkbox">
+            <label for="checkbox3">
+                Loans
+            </label>
+        </div>
+        <div class="checkbox checkbox-success">
+            <input name="checkbox4" value="returns" type="checkbox">
+            <label for="checkbox4">
+                Returns
+            </label>
+        </div>
+
+
+		</br>
+		<div><button type="submit" name="submit" value="Submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Submit</button></div>
 		</div>
+
 	</div>
 	
 	<!-- Optional theme -->
