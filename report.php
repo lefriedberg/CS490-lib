@@ -41,14 +41,16 @@
         
         $errorMessage = "";
 
-		$varName = $_POST['name'];
+		$varBookCheck = $_POST['bookcheckbox'];
+        $varMemberCheck = $_POST['membercheckbox'];
+        $varLoanCheck = $_POST['loancheckbox'];
 
-        if(empty($varName)) {
-            $errorMessage .= "Name";
+        if(empty($varBookCheck)&&empty($varMemberCheck)&&empty($varLoanCheck)) {
+            $errorMessage .= "None";
             echo "<div class='alert alert-danger' role='alert'>";
             echo "<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span>";
             echo "<span class='sr-only'>Error:</span>";
-            echo " You forgot to enter the name!";
+            echo " You didn't select anything!";
             echo "</div>";
         }
           
@@ -62,29 +64,59 @@
             if(!$db) die("Error connecting to MySQL database.");
             mysql_select_db("library" ,$db);
 
-   /*        $result = mysql_query("SELECT * FROM member WHERE name=" . PrepSQL($varName));
-            
             echo "<div class='alert alert-success' role='alert'>";
             echo "<span class='glyphicon glyphicon-ok-sign' aria-hidden='true'></span>";
             echo "<span class='sr-only'>Success</span>";
-            echo " Member found!";
+            echo " Book found!";
             echo "</div>";  
-            
 
-            echo "<table class='table table-striped'>";
-            while($row = mysql_fetch_array($result))
+            if ($varBookCheck=="book") {
+                $bookresult = mysql_query("SELECT * FROM book");
+
+                echo "<table class='table table-striped'>";
+                while($row= mysql_fetch_array($bookresult))
+                      echo("<tr><td>ID</td><td>Title</td><td>Author</td><td>ISBN</td><td>Call No</td><td>Shelf Status</td></tr><tr><td>".
+                            $row['ID']."</td><td>".
+                            $row['title']."</td><td>".
+                            $row['author']."</td><td>".
+                            $row['ISBN']."</td><td>".
+                            $row['call_no']."</td><td>".
+                            $row['shelf_status']."</td></tr>");
+             echo "</table>";
+            }
+
+            if ($varMemberCheck=="member") {
+                $memberresult = mysql_query("SELECT * FROM member");
+
+                echo "<table class='table table-striped'>";
+                while($row = mysql_fetch_array($memberresult))
                       echo("<tr><td>ID</td><td>Name</td><td>Debt</td></tr><tr><td>".
                            $row['ID']."</td><td>".
                            $row['name']."</td><td>".
                            $row['debt']."</td></tr>");
-                  
-            echo "</table>";
+                echo "</table>";
+            }
 
-        echo "<a href='membersearch.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Submit Another Entry</a>";
-        exit();
-        } */
+            if ($varLoanCheck=="loan") {
+                $loanresult = mysql_query("SELECT M.name, B.title, L.due_date 
+                    FROM book B, loan L, member M 
+                    WHERE B.ID = L.bID AND M.ID = L.mID");
+
+                echo "<table class='table table-striped'>";
+                while($row = mysql_fetch_array($loanresult))
+                      echo("<tr><td>Member</td><td>Book</td><td>Due Date</td></tr><tr><td>".
+                           $row['name']."</td><td>".
+                           $row['title']."</td><td>".
+                           $row['due_date']."</td></tr>");
+                echo "</table>";
+            }
+
+
+            echo "<a href='report.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Submit Another Entry</a>";
+            exit();
+        }
         else {
-            echo "<a href='membersearch.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Try Again</a>";
+            echo "<a href='report.html' class='btn btn-primary' role='button'><span class='glyphicon glyphicon-repeat' aria-hidden='true'></span> Try Again</a>";
         } 
     }
 
